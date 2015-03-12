@@ -1,0 +1,2 @@
+zone "example.com" IN { type master; file "/var/cache/bind/zones/internal"; };
+zone "openstacklocal" {type master; file "/etc/bind/openstack.local";};

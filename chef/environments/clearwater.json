@@ -1,0 +1,23 @@
+{
+  "name": "clearwater",
+  "description": "Clearwater deployment",
+  "cookbook_versions": {
+    "clearwater": "= 0.1.0"
+  },
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "default_attributes": {
+  },
+  "override_attributes": {
+    "clearwater": {
+      "root_domain": "example.com",
+      "use_subdomain": false,
+      "repo_server": "http://repo.cw-ngv.com/stable",
+      "number_start": "6505550000",
+      "number_count": 1000,
+      "pstn_number_count": 0,
+      "dns_internal_subnet": "192.168.10.0/24",
+      "dns_forwarder": "8.8.8.8"
+    }
+  }
+}

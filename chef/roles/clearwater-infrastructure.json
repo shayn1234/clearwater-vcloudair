@@ -1,0 +1,55 @@
+{
+  "name": "clearwater-infrastructure",
+  "description": "clearwater-infrastructure role",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "clearwater": {
+      "root_domain": "example.com",
+      "use_subdomain": true,
+      "region": "us-east-1",
+      "availability_zones": [
+        "us-east-1a",
+        "us-east-1b"
+      ],
+      "repo_server": "http://repo.cw-ngv.com/stable",
+      "number_start": "6505550000",
+      "number_count": 100,
+      "pstn_number_start": "2125550100",
+      "pstn_number_count": 10,
+      "dns_ttl": 300,
+      "sas_server": "0.0.0.0",
+      "splunk_server": "0.0.0.0",
+      "enum_server": null,
+      "trusted_peers": [
+
+      ],
+      "signup_key": "secret",
+      "turn_workaround": "password",
+      "ellis_api_key": "secret",
+      "ellis_cookie_key": "secret",
+      "homestead_password_encryption_key": null,
+      "cassandra_hostname": "localhost",
+      "hss_hostname": "0.0.0.0",
+      "hss_port": 3868,
+      "smtp_server": "localhost",
+      "smtp_username": "",
+      "smtp_password": "",
+      "email_sender": "clearwater@example.com",
+      "dns_internal_subnet": "10.0.0.0/8",
+      "dns_forwarder": "10.0.0.1"
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[clearwater::ec2_metadata]",
+    "recipe[apt]",
+    "recipe[chef-solo-search]",
+    "recipe[clearwater::infrastructure]"
+  ],
+  "env_run_lists": {
+
+  }
+}

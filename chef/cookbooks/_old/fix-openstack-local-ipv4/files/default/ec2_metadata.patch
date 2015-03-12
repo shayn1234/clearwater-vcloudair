@@ -1,0 +1,16 @@
+--- /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/ohai-6.20.0/lib/ohai/mixin/ec2_metadata.rb.orig	2014-02-20 21:09:43.000000000 +0000
++++ /opt/chef/embedded/lib/ruby/gems/1.9.1/gems/ohai-6.20.0/lib/ohai/mixin/ec2_metadata.rb	2014-09-07 14:19:14.036658600 +0000
+@@ -117,7 +117,12 @@
+               if EC2_ARRAY_VALUES.include? key
+                 metadata_get(key, api_version).body.split("\n")
+               else
+-                metadata_get(key, api_version).body
++                ret = metadata_get(key, api_version).body
++                if key == 'local-ipv4'
++                  ret.split(',')[0]
++                else
++                  ret
++                end
+               end
+           elsif not key.eql?(id) and not key.eql?('/')
+             name = key[0..-2]
